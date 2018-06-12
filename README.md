@@ -38,3 +38,22 @@ switching euid to 0 and egid to 0
  
  
  suck ! I have tried to commit many time but the network is suck
+
+/
+### Hello! continue my study record 18/6/12 today we still meet numerous problems
+first one: When I start my bit-32 firefox ,this error occured
+{XPCOMGlueLoad error for file /opt/firefox/libmozgtk.so:
+libgtk-3.so.0: wrong ELF class: ELFCLASS64
+Couldn't load XPCOM.}
+
+By google for answer,I need to reinstall all package with 32-bite
+BTW,never forget reading the original question commited on stack overflow before copying command line to your terminal
+Then,I just simplely give up.
+
+Next I head to downgrade gcc verison so I am able to match my kernal compiler to install nvidia driver..
+I have heard that update-alternatives is a good tool on ubuntu to change some sofeware version.
+Thing becomes more wir I have already install gcc but since I have typed this commond
+update-alternatives --list gcc 
+gcc link is broken and need install gcc again
+BUT,when I apt install gcc ,It ture out that I have the newest version!WTF
+
