@@ -14,7 +14,7 @@ jobs:
       run: |
         apt-get -y update
         apt-get -y upgrade 
-        apt-get update && apt-get install -y python3
+        apt-get update && apt-get install -y python3 unzip
         wget https://bootstrap.pypa.io/pip/3.4/get-pip.py
         python3 get-pip.py
         echo "alias python=python3" >> ~/.bashrc
@@ -22,13 +22,21 @@ jobs:
         python --version
         pip3 install --upgrade pip
         pip3 install gdown
+    - name: Restore cached data
+      id: cache-data-restore
+      uses: actions/cache/restore@v3
+      with:
+        path: |
+          cache-data
+        key: ${{ runner.os }}-data
     - name: cache data
       id: cache-data
       uses: actions/cache@v3
       with:
         path: cache-data
-        key: ${{runner.os}}-data
+        key: ${{ steps.cache-data-restore.outputs.cache-primary-key }}
     - name: download dataset
+      if: steps.cache-data.outputs.cache-hit != 'true'
       run: |
         gdown "1N2wWheD56WxViYIl7UrDUfhwSxkGXP7E&confirm=t" -O ./cache-data
         unzip ./cache-data/pipeline_example.zip
