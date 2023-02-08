@@ -10,13 +10,15 @@ jobs:
       run: |
         whereis fsl
         echo $FSLDIR
+    - name: install python dependencies
+      run: |
+        python --version
+        pip install requests
     - name: download dataset
       run: |
         wget https://gist.githubusercontent.com/doulemint/b31410eda944e5c40274eb5dbde5c235/raw/d09e470b09ce95f56266a3a951e84bc7031c2cc6/google_drive.py
         python google_drive.py 1N2wWheD56WxViYIl7UrDUfhwSxkGXP7E pipeline_example.zip
         unzip pipeline_example.zip
         ls ./pipeline_example
-    - name: install python dependencies
-      run: |
-        python --version
+
         
