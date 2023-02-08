@@ -18,8 +18,8 @@ jobs:
         echo "alias python=python3" >> ~/.bashrc
         /bin/bash -c "source ~/.bashrc"
         python --version
-        pip install --upgrade pip
-        pip install gdown
+        pip3 install --upgrade pip
+        pip3 install gdown
     - name: cache data
       id: cache-data
       uses: actions/cache@v3
