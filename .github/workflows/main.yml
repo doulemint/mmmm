@@ -12,8 +12,8 @@ jobs:
         echo $FSLDIR
     - name: install python dependencies
       run: |
-        python3 -m pip install --upgrade pip
-        pip3 install gdown
+        $CONDA/bin/conda env update --file environment.yml --name base
+        $CONDA/bin/conda install gdown
     - name: cache data
       id: cache-data
       uses: actions/cache@v3
