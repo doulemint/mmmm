@@ -1,0 +1,16 @@
+name: pipeline_check
+on: 
+  push:
+    branches:
+    - master
+    - beta-dev
+    paths:
+    - src/*
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    container: 
+      image: vistalab/fsl-v5.0
+    steps:
+    - run: whereis fsl
+           echo $FSLDIR
