@@ -4,7 +4,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     container: 
-      image: xxxxxiya/miceflow-kits
+      image: xxxxxiya/miceflow-kits:v2
     steps:
     - name: check fsl
       run: |
