@@ -4,7 +4,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     container: 
-      image: vistalab/fsl-v5.0
+      image: xxxxxiya/miceflow-kits
     steps:
     - name: check fsl
       run: |
@@ -12,10 +12,7 @@ jobs:
         echo $FSLDIR
     - name: install python dependencies
       run: |
-        python3 --version
-        apt-get -y install python3
-        sudo apt-get -y install python3-pip
-        python3 --version
+        source activate
         python3 -m pip install --upgrade pip
         pip3 install gdown
     - name: cache data
