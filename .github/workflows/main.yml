@@ -1,11 +1,5 @@
 name: pipeline_check
-on: 
-  push:
-    branches:
-    - master
-    - beta-dev
-    paths:
-    - src/*
+on: [push]
 jobs:
   job1:
     runs-on: ubuntu-latest
