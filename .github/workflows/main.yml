@@ -3,7 +3,13 @@ on: [push]
 jobs:
   job1:
     runs-on: ubuntu-latest
+    container: 
+      image: vistalab/fsl-v5.0
     steps:
+    - name: check fsl
+      run: |
+        whereis fsl
+        echo $FSLDIR
     - name: setup python 
       uses: actions/setup-python@v4
       with:
@@ -12,12 +18,17 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python --version
-        pip install requests
+        pip install gdown
+    - name: cache data
+      id: cache-data
+      uses: actions/cache@v3
+      with:
+        path: cache-data
+        key: ${{runner.os}}-data
     - name: download dataset
       run: |
-        wget https://gist.githubusercontent.com/doulemint/b31410eda944e5c40274eb5dbde5c235/raw/d09e470b09ce95f56266a3a951e84bc7031c2cc6/google_drive.py
-        python google_drive.py 1N2wWheD56WxViYIl7UrDUfhwSxkGXP7E pipeline_example.zip
-        unzip pipeline_example.zip
-        ls ./pipeline_example
+        gdown "1N2wWheD56WxViYIl7UrDUfhwSxkGXP7E&confirm=t" -O ./cache-data
+        unzip ./cache-data/pipeline_example.zip
+        ls ./cache-data/pipeline_example
 
         
